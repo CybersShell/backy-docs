@@ -12,10 +12,6 @@ The supported platforms for notifications are email (SMTP) and [Matrix](https://
 
 Notifications are defined by type. The top-level object will be the id, and the `type` is required.
 
-{{% notice info %}}
-Type in a cmd-configs object must match one of these.
-{{% /notice %}}
-
 ```yaml
 notifications:
   prod-email:
