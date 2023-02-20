@@ -2,12 +2,13 @@ pipeline:
   build:
     image: klakegg/hugo:ext-debian-ci
     commands:
+      - git submodule foreach 'git fetch origin; git checkout $(git describe --tags `git rev-list --tags --max-count=1`);'
       - hugo
 
   deploy:
     image: debian
     commands:
-      - mkdir ~/.ssh && chmod -R 700
+      - mkdir ~/.ssh && chmod -R 700 ~/.ssh
       - apt update -y && apt install openssh-client rsync -y
       - echo "$SSH_HOST_KEY" > ~/.ssh/known_hosts
       - echo 'echo "$SSH_PASSPHRASE"' > ~/.ssh/.print_ssh_password
