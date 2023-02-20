@@ -15,7 +15,8 @@ pipeline:
       - echo "$SSH_HOST_KEY" > ~/.ssh/known_hosts
       - echo 'echo "$SSH_PASSPHRASE"' > ~/.ssh/.print_ssh_password
       - eval $(ssh-agent -s)
-      - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=":0.0" SSH_ASKPASS=~/.ssh/.print_ssh_password setsid ssh-add -
+      - echo "$SSH_PRIVATE_KEY" > ~/.ssh/backy.cybershell.xyz
+      - DISPLAY=":0.0" SSH_ASKPASS=~/.ssh/.print_ssh_password setsid ssh-add ~/.ssh/backy.cybershell.xyz
       - rsync -atv --delete --progress public/ backy@backy.cybershell.xyz:docs
       - rsync -atv --delete --progress vangen/ backy@backy.cybershell.xyz:vangen-go
 
