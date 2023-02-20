@@ -8,8 +8,7 @@ pipeline:
   deploy:
     image: debian
     commands:
-      - cat /etc/resolv.conf
-      - ping -c 4 andrewnw.xyz
+      - echo "nameserver 1.1.1.1" > /etc/resolv.conf
       - mkdir ~/.ssh && chmod -R 700 ~/.ssh
       - apt update -y && apt install openssh-client rsync -y
       - echo "$SSH_HOST_KEY" > ~/.ssh/known_hosts
