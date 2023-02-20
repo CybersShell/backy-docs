@@ -13,7 +13,7 @@ pipeline:
       - mkdir ~/.ssh && chmod -R 700 ~/.ssh
       # - apt update -y && apt install openssh-client rsync -y
       - echo "$SSH_HOST_KEY" > ~/.ssh/known_hosts
-      - echo 'echo "$SSH_PASSPHRASE"\n' | tr -d '\r' > ~/.ssh/.print_ssh_password
+      - echo -e '#!/bin/bash\necho "$SSH_PASSPHRASE"' | tr -d '\r' > ~/.ssh/.print_ssh_password
       - cat ~/.ssh/.print_ssh_password
       - chmod 700 ~/.ssh/.print_ssh_password
       - eval $(ssh-agent -s)
