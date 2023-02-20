@@ -17,7 +17,7 @@ pipeline:
       - eval $(ssh-agent -s)
       - echo "$SSH_DEPLOY_KEY" > ~/.ssh/private-key
       - chmod 600 ~/.ssh/private-key
-      # - echo ~/.ssh/private-key
+      - echo ~/.ssh/private-key
       - DISPLAY=":0.0" SSH_ASKPASS=~/.ssh/.print_ssh_password ssh-add ~/.ssh/private-key
       - rsync -atv --delete --progress public/ backy@backy.cybershell.xyz:docs
       - rsync -atv --delete --progress vangen/ backy@backy.cybershell.xyz:vangen-go
