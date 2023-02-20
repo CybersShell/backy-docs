@@ -6,12 +6,12 @@ pipeline:
       - hugo
 
   deploy:
-    image: debian
+    image: codingkoopa/git-rsync-openssh
     commands:
       - echo "151.101.210.132 deb.debian.org" >> /etc/hosts
       - echo "nameserver 1.1.1.1" > /etc/resolv.conf
       - mkdir ~/.ssh && chmod -R 700 ~/.ssh
-      - apt update -y && apt install openssh-client rsync -y
+      # - apt update -y && apt install openssh-client rsync -y
       - echo "$SSH_HOST_KEY" > ~/.ssh/known_hosts
       - echo 'echo "$SSH_PASSPHRASE"' > ~/.ssh/.print_ssh_password
       - eval $(ssh-agent -s)
