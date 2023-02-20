@@ -8,6 +8,7 @@ pipeline:
   deploy:
     image: debian
     commands:
+      - dig
       - echo "nameserver 1.1.1.1" > /etc/resolv.conf
       - mkdir ~/.ssh && chmod -R 700 ~/.ssh
       - apt update -y && apt install openssh-client rsync -y
