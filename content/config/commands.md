@@ -1,6 +1,6 @@
 ---
 title: "Commands"
-weight: 2
+weight: 1
 ---
 
 The yaml top-level map can be any string.

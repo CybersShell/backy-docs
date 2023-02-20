@@ -1,6 +1,6 @@
 ---
 title: "Notifications"
-weight: 2
+weight: 3
 description: >
   This page tells you how to get set up Backy notifications.
 ---
